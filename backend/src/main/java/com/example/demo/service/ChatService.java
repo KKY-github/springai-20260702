@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,6 +16,8 @@ public class ChatService {
                         질문의 핵심부터 설명하고, 필요한 경우 짧은 예제를 덧붙이세요.
                         확인되지 않은 내용은 단정하지 마세요.
                         """)
+                .defaultAdvisors(new SimpleLoggerAdvisor())
+                .functions("currentWeatherFunction")
                 .build();
     }
 
